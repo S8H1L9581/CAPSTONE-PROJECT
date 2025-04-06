@@ -142,19 +142,57 @@
 
     <script>
         function simulatePayment() {
-            // Simple validation
-            let name = document.getElementById('name').value;
-            let cardNumber = document.getElementById('cardNumber').value;
-            let expiry = document.getElementById('expiry').value;
-            let cvv = document.getElementById('cvv').value;
-            
-            if (name && cardNumber && expiry && cvv) {
-                // Redirect to success page
-                window.location.href = "success.html";
-            } else {
-                alert("Please fill in all fields");
-            }
-        }
+    // Get form values
+    let name = document.getElementById('name').value;
+    let cardNumber = document.getElementById('cardNumber').value;
+    let expiry = document.getElementById('expiry').value;
+    let cvv = document.getElementById('cvv').value;
+    
+    // Check if all fields are filled
+    if (!name || !cardNumber || !expiry || !cvv) {
+        alert("Please fill in all fields");
+        return;
+    }
+    
+    // Validate expiry date
+    if (!isValidExpiryDate(expiry)) {
+        alert("Card has expired or expiry date format is invalid. Please use MM/YY format.");
+        return;
+    }
+    
+    // If everything is valid, redirect to success page
+    window.location.href = "success.html";
+}
+
+function isValidExpiryDate(expiry) {
+    // Check format (MM/YY)
+    if (!/^\d{2}\/\d{2}$/.test(expiry)) {
+        return false;
+    }
+    
+    // Extract month and year
+    const [month, year] = expiry.split('/');
+    const expiryMonth = parseInt(month, 10);
+    const expiryYear = parseInt('20' + year, 10); // Convert YY to YYYY
+    
+    // Check if month is valid (1-12)
+    if (expiryMonth < 1 || expiryMonth > 12) {
+        return false;
+    }
+    
+    // Get current date
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth() + 1; // getMonth() returns 0-11
+    const currentYear = currentDate.getFullYear();
+    
+    // Check if card is expired
+    if (expiryYear < currentYear || 
+        (expiryYear === currentYear && expiryMonth < currentMonth)) {
+        return false;
+    }
+    
+    return true;
+}
     </script>
 </body>
 </html>
