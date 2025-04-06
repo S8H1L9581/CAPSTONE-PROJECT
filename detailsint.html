@@ -458,6 +458,25 @@
             dobError.style.display = 'none';
         });
 
+        // Validate date format and check for future date
+        const dob = inputs.dateOfBirth.value.trim();
+        if (dob) {
+            // First check format
+            if (!/^(\d{2})-(\d{2})-(\d{4})$/.test(dob)) {
+                inputs.dateOfBirth.parentElement.classList.add('error');
+                errors.dob.textContent = 'Please enter a valid date in DD-MM-YYYY format';
+                errors.dob.style.display = 'block';
+                isValid = false;
+            } 
+            // Then check if it's a future date
+            else if (isFutureDate(dob)) {
+                inputs.dateOfBirth.parentElement.classList.add('error');
+                errors.dob.textContent = 'Date of birth cannot be in the future';
+                errors.dob.style.display = 'block';
+                isValid = false;
+            }
+        }
+
         passport.addEventListener('input', () => {
             passport.parentElement.classList.remove('error');
             passportError.style.display = 'none';
