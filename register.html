@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="register.css" />
+    <title>Form Validator</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <form id="form" class="form">
+                <h2>Register</h2>
+                <div class="form-control">
+                    <label for="username">Name</label>
+                    <input type="text" id="name" placeholder="Enter username" />
+                    <span style="color:red" id="name_error"></span>
+                </div>
+                <div class="form-control">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" placeholder="Enter email" />
+                    <span style="color:red" id="email_error"></span>
+                </div>
+                <div class="form-control">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter password" />
+                    <span style="color:red" id="pass_error"></span>
+                </div>
+                <button id="btn" type="submit">Submit</button>
+            </form>
+        </div>
+
+        <footer class="footer">
+            <p class="copyright-line">If you are registered pls <a href="login.html" style="color: yellow; font-size: 25px;">Login</a></p>
+        </footer>
+    </div>
+
+    <div class="background">
+        <img src="img1.png" class="background-image" alt="Hero section background">
+
+        <!-- Grid overlay -->
+        <div class="grid-slider">
+            <div class="grid-item hide"></div>
+            <div class="grid-item hide"></div>
+            <div class="grid-item hide"></div>
+            <div class="grid-item hide"></div>
+            <div class="grid-item hide"></div>
+            <div class="grid-item hide"></div>
+        </div>
+    </div>
+
+    <script src="register.js"></script>
+</body>
+</html>
