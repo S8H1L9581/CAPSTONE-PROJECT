@@ -1,6 +1,6 @@
 // User database
 const users = {
-    "user": { password: "user@123", redirect: "main.html" },
+    "user": { password: "user@123", redirect: "index.html" },
 };
 
 // Function to handle login with loading animation
