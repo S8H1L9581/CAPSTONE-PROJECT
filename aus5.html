@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking - Departure Options</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    
+    body {
+      background-size: cover;
+      background-position: center top;
+      font-family: 'Rubik', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      background-color: #333;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      z-index: 1;
+      position: relative;
+    }
+    
+    .section-title {
+      grid-column: 1 / -1;
+      margin: 30px 0 20px;
+      color: yellow;
+      font-size: clamp(20px, 5vw, 32px);
+      font-weight: bold;
+      padding-bottom: 10px;
+      position: relative;
+      text-align: left;
+    }
+    
+    .search-bar {
+      grid-column: 1 / -1;
+      background-color: white;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    .search-content {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      color: #333;
+      font-size: 16px;
+    }
+    
+    .search-icon {
+      color: #555;
+      margin-right: 10px;
+    }
+    
+    .search-separator {
+      margin: 0 10px;
+      font-weight: bold;
+    }
+    
+    .tab-container {
+      grid-column: 1 / -1;
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .tab {
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .tab.active {
+      background-color: #0d2240;
+      color: white;
+    }
+    
+    .tab:not(.active) {
+      background-color: white;
+      color: #333;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer; /* Add cursor pointer to indicate clickable */
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card-content {
+      padding: 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    
+    .card-info {
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .card-price {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: auto;
+      text-align: right;
+      color: #333;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+      .container {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        padding: 0 15px;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .container {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+      }
+      
+      .section-title {
+        font-size: 20px;
+        margin: 20px 0 15px;
+      }
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="search-bar">
+            <div class="search-content">
+                <span class="search-icon">🔍</span>
+                <span>India - Goal Coast</span>
+                <span class="search-separator">•</span>
+                <span>25 Mar</span>
+                <span class="search-separator">•</span>
+                <span>1 Adult</span>
+            </div>
+        </div>
+        
+        <h1 class="section-title">Select departure location</h1>
+        
+        
+        
+        <div class="card" onclick="window.location.href='aus7.html'">
+            <div class="card-content">
+                <h2 class="card-title">Mumbai</h2>
+                <div class="card-info">Flights from</div>
+                <div class="card-info">1+ stops</div>
+                <div class="card-price">₹51,282</div>
+            </div>
+        </div>
+        
+        
+        <div class="card" onclick="window.location.href='aus7.html'">
+            <div class="card-content">
+                <h2 class="card-title">Kolkata</h2>
+                <div class="card-info">Flights from</div>
+                <div class="card-info">1+ stops</div>
+                <div class="card-price">₹52,487</div>
+            </div>
+        </div>
+        
+        <div class="card" onclick="window.location.href='aus7.html'">
+            <div class="card-content">
+                <h2 class="card-title">Bangalore</h2>
+                <div class="card-info">Flights from</div>
+                <div class="card-info">1+ stops</div>
+                <div class="card-price">₹57,184</div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="card" onclick="window.location.href='aus7.html'">
+            <div class="card-content">
+                <h2 class="card-title">Chennai</h2>
+                <div class="card-info">Flights from</div>
+                <div class="card-info">1+ stops</div>
+                <div class="card-price">₹51,254</div>
+            </div>
+        </div>
+        
+        <div class="card" onclick="window.location.href='aus7.html'">
+            <div class="card-content">
+                <h2 class="card-title">Delhi</h2>
+                <div class="card-info">Flights from</div>
+                <div class="card-info">1+ stops</div>
+                <div class="card-price">₹51,789</div>
+            </div>
+        </div>
+        
+        <div class="card" onclick="window.location.href='aus7.html'">
+            <div class="card-content">
+                <h2 class="card-title">Hyderabad</h2>
+                <div class="card-info">Flights from</div>
+                <div class="card-info">1+ stops</div>
+                <div class="card-price">55,598</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

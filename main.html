@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Website</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&family=Roboto+Slab:wght@100;300;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+
+    <!-- Animate on scroll CDN -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Local CSS File -->
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <ul class="links-container">
+                <li class="link-item"><a href="#explore-section">Explore</a></li>
+                <li class="link-item"><a href="#services">Services</a></li>
+                <li class="link-item"><a href="#hero-section"><img src="logo.png" class="logo" alt="Travel Logo"></a></li>
+                <li class="link-item"><a href="#travel">Gallery</a></li>
+                <li class="link-item"><a href="#booknow">Book Now</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <main class="hero-section" id="hero-section">
+        <div class="hero-section-content" data-aos="fade-up">
+            <div class="animated-text">
+                <span></span>
+            </div>
+            <p class="hero-section-sub-heading">Discover the world's most amazing destinations</p>
+        </div>
+        
+        <!-- Scroll down icon -->
+        <img src="down arrow.png" class="scroll-down-icon" alt="Scroll down indicator">
+    </main>
+
+    <div class="background">
+        <img src="img1.png" class="background-image" alt="Hero section background">
+    
+        <!-- Grid overlay -->
+        <div class="grid-slider">
+            <div class="grid-item hide"></div>
+            <div class="grid-item hide"></div>
+            <div class="grid-item hide"></div>
+            <div class="grid-item hide"></div>
+            <div class="grid-item hide"></div>
+            <div class="grid-item hide"></div>
+        </div>
+    </div>
+
+    <!-- Explore Section -->
+    <section class="explore-section" id="explore-section">
+        <h1 class="section-title" data-aos="fade-up">Explore the world</h1>
+        <p class="section-para" data-aos="fade-up">Embark on a journey of discovery, exploring breathtaking destinations that will create memories to last a lifetime.</p>
+
+        <!-- Tours Grid -->
+        <div class="tours-container">
+            <div class="tour-card" data-aos="fade-up">
+                <a  href="#" data-destination="aus.html" target ="_blank"><img src="australia.png" class="tour-img" alt="australia"></a>
+                <div class="tour-body">
+                    <h3 class="tour-name">Australia</h3>
+                    <p class="tour-action">View city</p>
+                </div>
+            </div>
+
+            <div class="tour-card" data-aos="fade-up">
+                <a  href="#" data-destination="maldives.html" target ="_blank"><img src="maldives.png" class="tour-img" alt="maldives"></a>                
+                <div class="tour-body">
+                    <h3 class="tour-name">Maldives</h3>
+                    <p class="tour-action">View city</p>
+                </div>
+            </div>
+
+            <div class="tour-card" data-aos="fade-up">
+                <a  href="#" data-destination="europe.html" target ="_blank"><img src="paris.png" class="tour-img" alt="europe"></a>
+                <div class="tour-body">
+                    <h3 class="tour-name">Europe</h3>
+                    <p class="tour-action">View city</p>
+                </div>
+            </div>
+
+            <div class="tour-card" data-aos="fade-up">
+                <a  href="#" data-destination="uae.html" target ="_blank"><img src="dubai.png" class="tour-img" alt="uae"></a>
+                <div class="tour-body">
+                    <h3 class="tour-name">UAE</h3>
+                    <p class="tour-action">View city</p>
+                </div>
+            </div>
+
+            <div class="tour-card" data-aos="fade-up">
+                <a  href="#" data-destination="india.html" target ="_blank"><img src="india.png" class="tour-img" alt="india"></a>
+                <div class="tour-body">
+                    <h3 class="tour-name">India</h3>
+                    <p class="tour-action">View city</p>
+                </div>
+            </div>
+
+            <div class="tour-card" data-aos="fade-up">
+                <a href="#" data-destination="italy.html" target ="_blank"><img src="italy.png" class="tour-img" alt="italy"></a>
+                <div class="tour-body">
+                    <h3 class="tour-name">Italy</h3>
+                    <p class="tour-action">View city</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <h1 class="section-title" data-aos="fade-up">Why Us?</h1>
+        <p class="section-para" data-aos="fade-up">Discover why travelers choose our exceptional travel experiences.</p>
+    
+        <!-- Services Grid -->
+        <div class="serives-grid">
+            <div class="service-card" data-aos="fade-up">
+                <div class="circle"></div>
+                <i class="fa-solid fa-earth-americas card-icon"></i>
+                <p class="service-text">We are based all over the world</p>
+            </div>
+            <div class="service-card" data-aos="fade-up">
+                <div class="circle"></div>
+                <i class="fa-solid fa-coins card-icon"></i>
+                <p class="service-text">Travel the World, Without thinking</p>
+            </div>
+            <div class="service-card" data-aos="fade-up">
+                <div class="circle"></div>
+                <i class="fa-solid fa-book-open card-icon"></i>
+                <p class="service-text">Get to know about local cultures</p>
+            </div>
+            <div class="service-card" data-aos="fade-up">
+                <div class="circle"></div>
+                <i class="fa-solid fa-person-snowboarding card-icon"></i>
+                <p class="service-text">Have your best experience</p>
+            </div>
+        </div>
+    
+        <div class="bg-circle"></div>
+    
+        <div class="travel-grid" id="travel">
+            <img src="img1.png" data-aos="fade-up" alt="Travel Image 1">
+            <img src="img2.png" data-aos="fade-up" alt="Travel Image 2">
+            <img src="img3.png" data-aos="fade-up" alt="Travel Image 3">
+            <img src="img4.png" data-aos="fade-up" alt="Travel Image 4">
+            <img src="img5.png" data-aos="fade-up" alt="Travel Image 5">
+            <img src="img6.png" data-aos="fade-up" alt="Travel Image 6">
+            <img src="australia.png" data-aos="fade-up" alt="Australia">
+            <img src="dubai.png" data-aos="fade-up" alt="Dubai">
+            <img src="maldives.png" data-aos="fade-up" alt="Maldives">
+            <img src="paris.png" data-aos="fade-up" alt="Paris">
+            <img src="india.png" data-aos="fade-up" alt="India">
+            <img src="italy.png" data-aos="fade-up" alt="Italy">
+        </div>
+    </section>
+
+    <!-- Book Now Section -->
+    <section class="book-section" id="booknow">
+        <div class="book-content" data-aos="fade-up">
+            <h1 class="book-now-title">Book your travel today</h1>
+            <p class="book-now-text">Give yourself and your family a peaceful and wonderful vacation this holiday</p>
+            <a target="_blank" href="https://www.skyscanner.co.in/routes/BOM/MCT?&utm_source=google&utm_medium=cpc&utm_campaign=IN-Flights-Search-EN-Routes-International-Middle+East-New&utm_term=Mumbai+to+Muscat&associateID=SEM_FLI_19465_00000&campaign_id=19431901569&adgroupid=144877294796&keyword_id=kwd-309096076208&gad_source=1&gclid=Cj0KCQjw-uK0BhC0ARIsANQtgGP83y6wn6FptvKSjxd2ZD27FWKJiu1iGHEb-CgqE_pKMf-_zXEkX7EaAvPKEALw_wcB&gclsrc=aw.ds">
+                <button class="book-now">Book Now</button>
+            </a>
+        </div>
+        <div class="bg-circle-2"></div>
+        <img src="book.png" data-aos="fade-up" class="book-now-img" alt="Booking Image">
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <img src="logo.png" class="footer-logo" alt="Travel Logo">
+        <div class="footer-text">
+            <p>Travel the world, on this holiday</p>
+            <p>Email - sahilpareek966@gmail.com</p>
+            <p>Phone - +91 9034531212</p>
+        </div>
+        <p class="copyright-line">Hope you like the design.</p>
+    </footer>
+
+    <!-- Animate on scroll JS CDN -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Local JS File -->
+    <script src="main.js"></script>
+</body>
+</html>

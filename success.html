@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #333;
+            color: yellow;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .container {
+            background-color: #333;
+            border-radius: 8px;
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(255, 255, 0, 0.2);
+        }
+        .success-icon {
+            font-size: 80px;
+            color: yellow;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        .success-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        h1 {
+            color: yellow;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: yellow;
+        }
+        .details {
+            background-color: rgba(240, 245, 255, 0.9);
+            padding: 20px;
+            border-radius: 6px;
+            text-align: left;
+            margin-bottom: 30px;
+            border: 1px solid #d6e0f5;
+            transition: transform 0.3s;
+        }
+        .details:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 255, 0, 0.3);
+        }
+        .details-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .details-label {
+            color: #64748b;
+        }
+        .details-value {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .btn {
+            background-color: yellow;
+            color: #333;
+            border: none;
+            padding: 14px 20px;
+            width: 100%;
+            max-width: 300px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: #FFF176;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 255, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">✓</div>
+        <h1>Payment Successful!</h1>
+        <p>Thank you for your payment. Your transaction has been completed successfully.</p>
+        
+        <div class="details">
+            <div class="details-row">
+                <span class="details-label">Transaction ID:</span>
+                <span class="details-value">TXN123456789</span>
+            </div>
+            <div class="details-row">
+                <span class="details-label">Date:</span>
+                <span class="details-value" id="current-date">March 16, 2025</span>
+            </div>
+            
+            <div class="details-row">
+                <span class="details-label">Payment Method:</span>
+                <span class="details-value">Credit Card (****1234)</span>
+            </div>
+        </div>
+        
+        <div class="btn-container">
+            <a href="main.html" class="btn">Return to Home Page</a>
+        </div>
+    </div>
+
+    <script>
+        // Set current date on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            let now = new Date();
+            let formattedDate = now.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            document.getElementById('current-date').textContent = formattedDate;
+        });
+    </script>
+</body>
+</html>
