@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // If all fields are valid, set login status and redirect
             if (valid) {
                 localStorage.setItem('userLoggedIn', 'true');
-                window.location.href = "main.html";
+                window.location.href = "index.html";
             }
         });
     }
