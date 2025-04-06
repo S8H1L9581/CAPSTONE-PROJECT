@@ -409,6 +409,27 @@
             : '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 15L12 9L18 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     });
     
+    // Function to validate if a date is in the future
+    function isFutureDate(dateStr) {
+        // Parse the date in DD-MM-YYYY format
+        const parts = dateStr.split('-');
+        if (parts.length !== 3) return false;
+        
+        // Create date object (month is 0-indexed in JavaScript)
+        const day = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1;
+        const year = parseInt(parts[2], 10);
+        
+        const inputDate = new Date(year, month, day);
+        const today = new Date();
+        
+        // Set time to midnight for fair comparison
+        today.setHours(0, 0, 0, 0);
+        
+        // Return true if the date is in the future
+        return inputDate > today;
+    }
+    
     // Form validation and submission
     form.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -435,12 +456,23 @@
             isValid = false;
         }
         
-        // Validate date format
+        // Validate date format and check for future date
         const dob = inputs.dateOfBirth.value.trim();
-        if (dob && !/^(\d{2})-(\d{2})-(\d{4})$/.test(dob)) {
-            inputs.dateOfBirth.parentElement.classList.add('error');
-            errors.dob.style.display = 'block';
-            isValid = false;
+        if (dob) {
+            // First check format
+            if (!/^(\d{2})-(\d{2})-(\d{4})$/.test(dob)) {
+                inputs.dateOfBirth.parentElement.classList.add('error');
+                errors.dob.textContent = 'Please enter a valid date in DD-MM-YYYY format';
+                errors.dob.style.display = 'block';
+                isValid = false;
+            } 
+            // Then check if it's a future date
+            else if (isFutureDate(dob)) {
+                inputs.dateOfBirth.parentElement.classList.add('error');
+                errors.dob.textContent = 'Date of birth cannot be in the future';
+                errors.dob.style.display = 'block';
+                isValid = false;
+            }
         }
         
         // Submit or show error
