@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking - Passenger Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rubik', sans-serif;
+        }
+        
+        body {
+            background-size: cover;
+            background-position: center top;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            background-color: #333;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            z-index: 1;
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeIn 0.8s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .navbar {
+            background-color: #333;
+            color: yellow;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .navbar h1 {
+            font-size: 24px;
+            margin: 0;
+            /* Animation removed */
+        }
+
+        .passenger-form {
+            background-color: #333;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(255, 255, 0, 0.2);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .form-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: yellow;
+            margin-bottom: 8px;
+            position: relative;
+            /* Animation removed */
+        }
+        
+        .form-subtitle {
+            font-size: 16px;
+            color: yellow;
+            margin-bottom: 30px;
+        }
+        
+        .passenger-section {
+            border-left: 4px solid #0d2240;
+            padding-left: 20px;
+            margin-bottom: 30px;
+            position: relative;
+            /* Removed hover transform effect */
+        }
+        
+        .passenger-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .passenger-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: yellow;
+        }
+        
+        .passenger-subtitle {
+            font-size: 16px;
+            color: yellow;
+        }
+        
+        .toggle-icon {
+            font-size: 24px;
+            cursor: pointer;
+            color: yellow;
+            transition: transform 0.3s;
+        }
+        
+        /* Removed hover effect for toggle-icon */
+        
+        .form-row {
+            margin-bottom: 20px;
+            /* Removed hover transform effect */
+        }
+        
+        .name-instruction {
+            font-size: 16px;
+            color: yellow;
+            margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+        
+        /* Removed hover effect for name-instruction */
+        
+        .gender-options {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .gender-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            /* Removed hover transform effect */
+        }
+        
+        .radio-input {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #777;
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        /* Removed hover effect for radio-input */
+        
+        .radio-input input {
+            opacity: 0;
+            position: absolute;
+        }
+        
+        .radio-input span {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .radio-input input:checked + span::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: yellow;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .radio-label {
+            font-size: 16px;
+            color: yellow;
+            transition: color 0.3s;
+        }
+        
+        /* Removed hover effect for radio-label */
+        
+        .input-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .input-field {
+            flex: 1;
+        }
+        
+        .input-field input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        .input-field input:focus {
+            outline: none;
+            border-color: yellow;
+            box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+        }
+        
+        /* Removed hover effect for input */
+        
+        .form-note {
+            font-size: 14px;
+            color: yellow;
+            margin-top: 10px;
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px rgba(255, 255, 0, 0.2);
+            }
+            to {
+                text-shadow: 0 0 10px rgba(255, 255, 0, 0.6);
+            }
+        }
+        
+        .form-note::before {
+            content: '✱ ';
+            color: yellow;
+        }
+
+        .submit-button {
+            background-color: yellow;
+            color: #333;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        /* Removed hover effect for submit-button */
+        
+        .submit-button:after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(30deg);
+            transition: transform 0.5s;
+            opacity: 0;
+        }
+        
+        /* Removed hover effect for submit-button:after */
+
+        .error-message {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .input-field.error input {
+            border: 1px solid #ff6b6b;
+        }
+
+        .validation-error {
+            color: #ff6b6b;
+            font-size: 16px;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: rgba(255, 107, 107, 0.1);
+            border-radius: 4px;
+            display: none;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .input-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .gender-options {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Removed the animated-bg div -->
+    
+    <div class="container">
+        <div class="navbar">
+            <h1>Flight Booking System</h1>
+        </div>
+        <form id="passengerForm" class="passenger-form">
+            <h1 class="form-title">Enter Passenger Details</h1>
+            <p class="form-subtitle">Login to book with your saved details</p>
+            
+            <div class="validation-error" id="formError"></div>
+            
+            <div class="passenger-section">
+                <div class="passenger-header">
+                    <div>
+                        <h2 class="passenger-title">Adult 1</h2>
+                        <p class="passenger-subtitle">Passenger 1</p>
+                    </div>
+                    <div class="toggle-icon" id="togglePassenger">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 15L12 9L18 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="form-content" id="passengerContent">
+                    <div class="gender-options">
+                        <label class="gender-option">
+                            <div class="radio-input">
+                                <input type="radio" name="gender" value="male" required>
+                                <span></span>
+                            </div>
+                            <span class="radio-label" style="color: yellow;">Male</span>
+                        </label>
+                        
+                        <label class="gender-option">
+                            <div class="radio-input">
+                                <input type="radio" name="gender" value="female" required>
+                                <span></span>
+                            </div>
+                            <span class="radio-label" style="color: yellow;">Female</span>
+                        </label>
+                    </div>
+                    <div class="error-message" id="genderError">Please select a gender</div>
+                    
+                    <div class="form-row">
+                        <p class="name-instruction">Name should be as per government ID</p>
+                        <div class="input-row">
+                            <div class="input-field">
+                                <input type="text" id="firstName" placeholder="First And Middle Name" required>
+                                <div class="error-message" id="firstNameError">Please enter first name</div>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" id="lastName" placeholder="Last Name" required>
+                                <div class="error-message" id="lastNameError">Please enter last name</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="input-field">
+                            <input type="text" id="dateOfBirth" placeholder="Date Of Birth (DD-MM-YYYY)" required>
+                            <div class="error-message" id="dobError">Please enter a valid date in DD-MM-YYYY format</div>
+                        </div>
+                        <p class="form-note">Please enter date of birth in (DD-MM-YYYY) format i.e. 25-04-1998</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-row">
+                <button type="submit" id="submitButton" class="submit-button">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Get key elements
+    const form = document.getElementById('passengerForm');
+    const inputs = {
+        firstName: document.getElementById('firstName'),
+        lastName: document.getElementById('lastName'),
+        dateOfBirth: document.getElementById('dateOfBirth')
+    };
+    const errors = {
+        form: document.getElementById('formError'),
+        firstName: document.getElementById('firstNameError'),
+        lastName: document.getElementById('lastNameError'),
+        dob: document.getElementById('dobError'),
+        gender: document.getElementById('genderError')
+    };
+    
+    // Toggle passenger details
+    document.getElementById('togglePassenger').addEventListener('click', function() {
+        const content = document.getElementById('passengerContent');
+        const isVisible = content.style.display !== 'none';
+        content.style.display = isVisible ? 'none' : 'block';
+        this.innerHTML = isVisible 
+            ? '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+            : '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 15L12 9L18 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    });
+    
+    // Form validation and submission
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Clear previous errors
+        Object.values(errors).forEach(e => e.style.display = 'none');
+        Object.values(inputs).forEach(i => i.parentElement.classList.remove('error'));
+        
+        // Validate fields
+        let isValid = true;
+        
+        // Check text inputs
+        for (const [key, input] of Object.entries(inputs)) {
+            if (!input.value.trim()) {
+                input.parentElement.classList.add('error');
+                errors[key === 'dateOfBirth' ? 'dob' : key].style.display = 'block';
+                isValid = false;
+            }
+        }
+        
+        // Check gender selection
+        if (!document.querySelector('input[name="gender"]:checked')) {
+            errors.gender.style.display = 'block';
+            isValid = false;
+        }
+        
+        // Validate date format
+        const dob = inputs.dateOfBirth.value.trim();
+        if (dob && !/^(\d{2})-(\d{2})-(\d{4})$/.test(dob)) {
+            inputs.dateOfBirth.parentElement.classList.add('error');
+            errors.dob.style.display = 'block';
+            isValid = false;
+        }
+        
+        // Submit or show error
+        if (isValid) {
+            window.location.href = 'paypage.html';
+        } else {
+            errors.form.textContent = 'Please fill in all required fields correctly.';
+            errors.form.style.display = 'block';
+            errors.form.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+    
+    // Clear errors on input
+    for (const [key, input] of Object.entries(inputs)) {
+        input.addEventListener('input', function() {
+            this.parentElement.classList.remove('error');
+            errors[key === 'dateOfBirth' ? 'dob' : key].style.display = 'none';
+        });
+    }
+    
+    // Clear gender error on selection
+    document.querySelectorAll('input[name="gender"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            errors.gender.style.display = 'none';
+        });
+    });
+});  
+    </script>
+</body>
+</html>
