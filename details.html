@@ -55,7 +55,7 @@
         .navbar h1 {
             font-size: 24px;
             margin: 0;
-            /* Animation removed */
+            
         }
 
         .passenger-form {
@@ -73,7 +73,7 @@
             color: yellow;
             margin-bottom: 8px;
             position: relative;
-            /* Animation removed */
+            
         }
         
         .form-subtitle {
@@ -87,7 +87,7 @@
             padding-left: 20px;
             margin-bottom: 30px;
             position: relative;
-            /* Removed hover transform effect */
+            
         }
         
         .passenger-header {
@@ -115,11 +115,11 @@
             transition: transform 0.3s;
         }
         
-        /* Removed hover effect for toggle-icon */
+        
         
         .form-row {
             margin-bottom: 20px;
-            /* Removed hover transform effect */
+        
         }
         
         .name-instruction {
@@ -129,7 +129,7 @@
             transition: color 0.3s;
         }
         
-        /* Removed hover effect for name-instruction */
+        
         
         .gender-options {
             display: flex;
@@ -141,7 +141,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            /* Removed hover transform effect */
+            
         }
         
         .radio-input {
@@ -155,7 +155,7 @@
             transition: all 0.3s ease;
         }
         
-        /* Removed hover effect for radio-input */
+        
         
         .radio-input input {
             opacity: 0;
@@ -188,7 +188,7 @@
             transition: color 0.3s;
         }
         
-        /* Removed hover effect for radio-label */
+        
         
         .input-row {
             display: flex;
@@ -215,7 +215,7 @@
             box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
         }
         
-        /* Removed hover effect for input */
+        
         
         .form-note {
             font-size: 14px;
@@ -253,7 +253,7 @@
             width: 100%;
         }
 
-        /* Removed hover effect for submit-button */
+        
         
         .submit-button:after {
             content: '';
@@ -268,7 +268,7 @@
             opacity: 0;
         }
         
-        /* Removed hover effect for submit-button:after */
+    
 
         .error-message {
             color: #ff6b6b;
@@ -291,7 +291,7 @@
             display: none;
         }
         
-        /* Responsive adjustments */
+    
         @media (max-width: 768px) {
             .input-row {
                 flex-direction: column;
@@ -306,7 +306,7 @@
     </style>
 </head>
 <body>
-    <!-- Removed the animated-bg div -->
+    
     
     <div class="container">
         <div class="navbar">
@@ -375,7 +375,7 @@
                 </div>
             </div>
 
-            <!-- Submit Button -->
+    
             <div class="form-row">
                 <button type="submit" id="submitButton" class="submit-button">Submit</button>
             </div>
@@ -384,7 +384,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-    // Get key elements
+
     const form = document.getElementById('passengerForm');
     const inputs = {
         firstName: document.getElementById('firstName'),
@@ -399,7 +399,7 @@
         gender: document.getElementById('genderError')
     };
     
-    // Toggle passenger details
+    
     document.getElementById('togglePassenger').addEventListener('click', function() {
         const content = document.getElementById('passengerContent');
         const isVisible = content.style.display !== 'none';
@@ -409,13 +409,13 @@
             : '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 15L12 9L18 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     });
     
-    // Function to validate if a date is in the future
+
     function isFutureDate(dateStr) {
-        // Parse the date in DD-MM-YYYY format
+        
         const parts = dateStr.split('-');
         if (parts.length !== 3) return false;
         
-        // Create date object (month is 0-indexed in JavaScript)
+        
         const day = parseInt(parts[0], 10);
         const month = parseInt(parts[1], 10) - 1;
         const year = parseInt(parts[2], 10);
@@ -423,25 +423,25 @@
         const inputDate = new Date(year, month, day);
         const today = new Date();
         
-        // Set time to midnight for fair comparison
+    
         today.setHours(0, 0, 0, 0);
         
-        // Return true if the date is in the future
+    
         return inputDate > today;
     }
     
-    // Form validation and submission
+    
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         
-        // Clear previous errors
+        
         Object.values(errors).forEach(e => e.style.display = 'none');
         Object.values(inputs).forEach(i => i.parentElement.classList.remove('error'));
         
-        // Validate fields
+    
         let isValid = true;
         
-        // Check text inputs
+        
         for (const [key, input] of Object.entries(inputs)) {
             if (!input.value.trim()) {
                 input.parentElement.classList.add('error');
@@ -450,23 +450,23 @@
             }
         }
         
-        // Check gender selection
+
         if (!document.querySelector('input[name="gender"]:checked')) {
             errors.gender.style.display = 'block';
             isValid = false;
         }
         
-        // Validate date format and check for future date
+        
         const dob = inputs.dateOfBirth.value.trim();
         if (dob) {
-            // First check format
+            
             if (!/^(\d{2})-(\d{2})-(\d{4})$/.test(dob)) {
                 inputs.dateOfBirth.parentElement.classList.add('error');
                 errors.dob.textContent = 'Please enter a valid date in DD-MM-YYYY format';
                 errors.dob.style.display = 'block';
                 isValid = false;
             } 
-            // Then check if it's a future date
+            
             else if (isFutureDate(dob)) {
                 inputs.dateOfBirth.parentElement.classList.add('error');
                 errors.dob.textContent = 'Date of birth cannot be in the future';
@@ -475,7 +475,7 @@
             }
         }
         
-        // Submit or show error
+        
         if (isValid) {
             window.location.href = 'paypage.html';
         } else {
@@ -485,7 +485,7 @@
         }
     });
     
-    // Clear errors on input
+    
     for (const [key, input] of Object.entries(inputs)) {
         input.addEventListener('input', function() {
             this.parentElement.classList.remove('error');
@@ -493,7 +493,7 @@
         });
     }
     
-    // Clear gender error on selection
+    
     document.querySelectorAll('input[name="gender"]').forEach(radio => {
         radio.addEventListener('change', function() {
             errors.gender.style.display = 'none';
