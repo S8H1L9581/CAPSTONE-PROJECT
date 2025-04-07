@@ -314,7 +314,7 @@
     </div>
 
     <script>
-        // Get form elements
+        
         const form = document.getElementById('passengerForm');
         const firstName = document.getElementById('firstName');
         const lastName = document.getElementById('lastName');
@@ -325,14 +325,14 @@
         const togglePassenger = document.getElementById('togglePassenger');
         const passengerContent = document.getElementById('passengerContent');
         
-        // Error messages
+        
         const firstNameError = document.getElementById('firstNameError');
         const lastNameError = document.getElementById('lastNameError');
         const dobError = document.getElementById('dobError');
         const genderError = document.getElementById('genderError');
         const passportError = document.getElementById('passportError');
 
-        // Toggle passenger section
+    
         togglePassenger.addEventListener('click', function() {
             if (passengerContent.style.display === 'none') {
                 passengerContent.style.display = 'block';
@@ -343,7 +343,7 @@
             }
         });
         
-        // Form submission
+        
         form.addEventListener('submit', function(event) {
             event.preventDefault();
             resetErrors();
@@ -353,7 +353,7 @@
             }
         });
         
-        // Form validation
+        
         function validateForm() {
             let isValid = true;
             
@@ -402,7 +402,7 @@
             return isValid;
         }
         
-        // Date format validation (DD-MM-YYYY)
+        
         function validateDateFormat(dateString) {
             const regex = /^(\d{2})-(\d{2})-(\d{4})$/;
             if (!regex.test(dateString)) return false;
@@ -421,13 +421,13 @@
             return true;
         }
         
-        // Show error for a field
+
         function showError(inputElement, errorElement) {
             inputElement.parentElement.classList.add('error');
             errorElement.style.display = 'block';
         }
         
-        // Reset all errors
+    
         function resetErrors() {
             formError.style.display = 'none';
             firstNameError.style.display = 'none';
@@ -442,7 +442,7 @@
             passport.parentElement.classList.remove('error');
         }
         
-        // Clear errors when typing
+    
         firstName.addEventListener('input', () => {
             firstName.parentElement.classList.remove('error');
             firstNameError.style.display = 'none';
@@ -458,17 +458,17 @@
             dobError.style.display = 'none';
         });
 
-        // Validate date format and check for future date
+        
         const dob = inputs.dateOfBirth.value.trim();
         if (dob) {
-            // First check format
+            
             if (!/^(\d{2})-(\d{2})-(\d{4})$/.test(dob)) {
                 inputs.dateOfBirth.parentElement.classList.add('error');
                 errors.dob.textContent = 'Please enter a valid date in DD-MM-YYYY format';
                 errors.dob.style.display = 'block';
                 isValid = false;
             } 
-            // Then check if it's a future date
+    
             else if (isFutureDate(dob)) {
                 inputs.dateOfBirth.parentElement.classList.add('error');
                 errors.dob.textContent = 'Date of birth cannot be in the future';
