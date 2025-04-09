@@ -71,7 +71,9 @@
         }
         .btn-container {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
             width: 100%;
         }
         .btn {
@@ -94,6 +96,54 @@
             background-color: #FFF176;
             transform: scale(1.05);
             box-shadow: 0 0 15px rgba(255, 255, 0, 0.7);
+        }
+        .download-btn {
+            background-color: #333;
+            color: yellow;
+            border: 2px solid yellow;
+        }
+        .download-btn:hover {
+            background-color: rgba(255, 255, 0, 0.1);
+        }
+        /* Sample ticket styles for download */
+        .hidden {
+            display: none;
+        }
+        #ticketTemplate {
+            width: 100%;
+            max-width: 400px;
+            background-color: white;
+            color: black;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .ticket-header {
+            border-bottom: 2px dashed #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .ticket-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .ticket-content {
+            margin-bottom: 20px;
+        }
+        .ticket-barcode {
+            text-align: center;
+            margin: 15px 0;
+            font-family: monospace;
+            letter-spacing: -1px;
+            font-size: 14px;
+        }
+        .ticket-footer {
+            border-top: 2px dashed #ccc;
+            padding-top: 10px;
+            text-align: center;
+            font-size: 12px;
         }
     </style>
 </head>
@@ -121,11 +171,40 @@
         
         <div class="btn-container">
             <a href="index.html" class="btn">Return to Home Page</a>
+            <a href="#" class="btn download-btn" id="downloadTicket">Download Ticket</a>
+        </div>
+    </div>
+
+    <div class="hidden">
+        <div id="ticketTemplate">
+            <div class="ticket-header">
+                <div class="ticket-logo">EVENT TICKET</div>
+                <div>Your Access Pass</div>
+            </div>
+            
+            <div class="ticket-content">
+                <p><strong>Event:</strong> Annual Conference 2025</p>
+                <p><strong>Date:</strong> <span id="ticket-date">April 15, 2025</span></p>
+                <p><strong>Time:</strong> 9:00 AM - 5:00 PM</p>
+                <p><strong>Venue:</strong> Convention Center, Main Hall</p>
+                <p><strong>Ticket ID:</strong> <span id="ticket-id">TKT-123456789</span></p>
+                <p><strong>Attendee:</strong> Valued Customer</p>
+            </div>
+            
+            <div class="ticket-barcode">
+                ||||| |||| | ||||||| |||| |||||| |||
+                TKT-123456789
+            </div>
+            
+            <div class="ticket-footer">
+                <p>Please present this ticket at the entrance. Valid ID may be required.</p>
+                <p>Thank you for your purchase!</p>
+            </div>
         </div>
     </div>
 
     <script>
-        
+       
         document.addEventListener('DOMContentLoaded', function() {
             let now = new Date();
             let formattedDate = now.toLocaleDateString('en-US', { 
@@ -134,6 +213,51 @@
                 day: 'numeric' 
             });
             document.getElementById('current-date').textContent = formattedDate;
+            
+           
+            document.getElementById('ticket-date').textContent = formattedDate;
+            
+            
+            let ticketId = 'TKT-' + Math.floor(Math.random() * 900000000 + 100000000);
+            document.getElementById('ticket-id').textContent = ticketId;
+            
+            
+            document.getElementById('downloadTicket').addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                
+                const ticketContent = document.getElementById('ticketTemplate').outerHTML;
+                
+               
+                const blob = new Blob([
+                    '<!DOCTYPE html><html><head><title>Your Ticket</title><style>' +
+                    'body { font-family: Arial, sans-serif; margin: 20px; }' +
+                    '.ticket-header { border-bottom: 2px dashed #ccc; padding-bottom: 10px; margin-bottom: 15px; text-align: center; }' +
+                    '.ticket-logo { font-size: 24px; font-weight: bold; margin-bottom: 5px; }' +
+                    '.ticket-content { margin-bottom: 20px; }' +
+                    '.ticket-barcode { text-align: center; margin: 15px 0; font-family: monospace; letter-spacing: -1px; font-size: 14px; }' +
+                    '.ticket-footer { border-top: 2px dashed #ccc; padding-top: 10px; text-align: center; font-size: 12px; }' +
+                    '</style></head><body>' + 
+                    ticketContent +
+                    '</body></html>'
+                ], { type: 'text/html' });
+                
+                
+                const url = URL.createObjectURL(blob);
+                
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'event-ticket.html';
+                document.body.appendChild(a);
+                a.click();
+                
+                
+                setTimeout(() => {
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 0);
+            });
         });
     </script>
 </body>
